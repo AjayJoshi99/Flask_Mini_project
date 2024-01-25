@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <head>
+    <style>
+      body{
+      background-image:url("{{ url_for('static', filename='background_todo.jpeg') }}");
+      font-family:cursive;
+      }
+      .division{
+        background-color:white;
+        height:300px;
+        padding: 40px;
+        border-radius:10px;
+      }
+    </style>
+  </head>
+    <body>
+  <br/>
+  <div class = 'container division'>
+    <form action="#" method ='POST'>
+  <div class="mb-3 ">
+    <label for="title" class="form-label">To Do</label>
+    <input type="text" class="form-control" name = "title" id="title" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label">Description</label>
+    <input type="text" class="form-control" name = 'desc' id="desc">
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form></div>
+<br/>
+  <h3 class="mx-5">To-Do-List</h3>
+  <table class="table mx-3">
+    <tbody>
+  {% if allToDo|length==0 %}
+  <br>
+    <h2>No record</h2>
+  {%  else %}
+  <thead>
+    <tr>
+      <th scope="col">SrNo</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Time</th>
+      <th scope="col">Action</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  {% for todo in allToDo %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{todo.title}}</td>
+      <td>{{todo.desc}}</td>
+      <td>{{todo.date_created}}</td>
+      <td><a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-dark">Update</a></td>
+      <td><a href="{{ url_for('delete', sno=todo.sno)}}" type="button" class="btn btn-outline-dark">Delete</a></td>
+    </tr>
+  {% endfor %}
+  {% endif %}
+
+  </tbody>
+</table>
+  {%  endblock body %}
+
+  </body>
+</html>

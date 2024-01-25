@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block body %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body {
+      font-family:cursive;
+      background-color: #f8f9fa;
+      text-align: center;
+      background-image : url("{{ url_for('static', filename='background.jpeg') }}")
+    }
+    div.welcome{
+      padding:20px;
+      opacity:9;
+      border:5px hidden black;
+      border-radius:10px;
+      width:45%;
+      height:200px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      margin-top:10%;
+    }
+    button{
+      border-radius:10px;
+      width:20%;
+      height:30%
+    }
+    a{
+      text-decoration:none;
+    }
+    h1 {
+      color: #007bff;
+    }
+
+    p {
+      color: #6c757d;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome">
+      <br/>
+    <h1>Welcome to Your To-Do App</h1>
+    <p>Start managing your tasks efficiently with our simple and intuitive To-Do app.</p>
+    <p>
+      <button><a href="/hello">Get Started</a></button>
+    </p>
+  </div>
+</body>
+</html>
+
+{%  endblock body %}
